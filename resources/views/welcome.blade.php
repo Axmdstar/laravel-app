@@ -20,9 +20,9 @@
         @endif
     </head>
 
-        <section class="relative bg-white overflow-hidden flex-1">
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 blur-3xl opacity-20 pointer-events-none">
-    <div class="aspect-[1155/678] w-[72rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]"></div>
+        <section class="relative bg-white overflow-hidden h-screen flex-1">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 blur-3xl opacity-20 pointer-events-none h-full">
+    <div class="aspect-[1155/678] w-[72rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] "></div>
   </div>
 
   <div class="relative max-w-7xl mx-auto px-6 py-24 sm:py-32 lg:px-8">
@@ -37,7 +37,7 @@
       </p>
 
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a href="#" class="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all">
+        <a href= {{ route('quizzes.index') }} class="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all">
           Start Creating Free
         </a>
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900 flex items-center gap-1 group">
@@ -46,13 +46,6 @@
       </div>
     </div>
 
-    <div class="mt-16 flow-root sm:mt-24">
-      <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 backdrop-blur-sm">
-        <div class="rounded-md shadow-2xl ring-1 ring-gray-900/10 bg-white h-64 flex items-center justify-center text-gray-400 italic">
-          [ Dashboard Preview or Mockup Image Goes Here ]
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 </html>

@@ -71,17 +71,21 @@ class quizcontroller extends Controller
                 'category_id' => $request->category_id,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'data' => $quiz,
-            ], 201);
+            // return response()->json([
+            //     'status' => 'success',
+            //     'data' => $quiz,
+            // ], 201);
+            return redirect()
+                ->route('quizzes.index');
         } catch (ValidationException $e) {
             \Illuminate\Support\Facades\Log::error('Validation error: ', $e->errors());
 
-            return response()->json([
-                'status' => 'error',
-                'message' => $e->errors(),
-            ], 500);
+            // return response()->json([
+            //     'status' => 'error',
+            //     'message' => $e->errors(),
+            // ], 500);
+            return redirect()
+                ->route('quizzes.index');
         }
     }
     //

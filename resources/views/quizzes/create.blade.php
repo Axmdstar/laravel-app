@@ -1,5 +1,4 @@
 @extends('layouts.app') @section('content')
-   @endsection
 <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8">
         <div class="mb-8">
@@ -49,3 +48,4 @@
         </form>
     </div>
 </div>
+@endsection
