@@ -7,7 +7,6 @@
         </div>
 
         <form action="{{ route('quizzes.store') }}" method="POST" class="space-y-6">
-            @csrf
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Category</label>
