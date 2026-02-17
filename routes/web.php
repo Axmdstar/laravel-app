@@ -20,6 +20,7 @@
     // Route::get('/quizzes/{id}', [quizcontroller::class, 'show']);
     //
     use App\Http\Controllers\quizcontroller;
+    use App\Http\Middleware\Logger;
     use App\Models\category;
     use App\Models\quiz;
     use Illuminate\Http\Request;
@@ -40,7 +41,7 @@
         $quizzes = quiz::with('category')->get();
 
         return view('quizzes.index', compact('quizzes'));
-    })->name('quizzes.index');
+    })->name('quizzes.index')->middleware(Logger::class);
 
     // Show Create Form
     Route::get('/quizzes/create', function () {
@@ -52,9 +53,9 @@
     // Handle Form Submission (POST)
     Route::post('/quizzes', [quizcontroller::class, 'create'])->name('quizzes.store');
 
-    Route::post('/test', function (Request $request) {
-        Log($request->all());
-        echo 'Received data: ' . json_encode($request->all());
-
-        return view('axmed');
-    })->name('test');
+// Route::post('/test', function (Request $request) {
+//     Log($request->all());
+//     echo 'Received data: ' . json_encode($request->all());
+//
+//     return view('axmed');
+// })->name('test');
