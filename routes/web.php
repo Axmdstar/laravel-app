@@ -3,48 +3,58 @@
     // use App\Http\Controllers\categorycontroller;
     // use App\Http\Controllers\quizcontroller;
     use App\Http\Controllers\categorycontroller;
-//
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//
-// // category routes
-// Route::get('/categories', [categorycontroller::class, 'get_all_category']);
-// Route::get('/categories/{id}', [categorycontroller::class, 'get_category_by_id']);
-// Route::post('/categories', [categorycontroller::class, 'create_category']);
-// Route::get('/categories/seed', [categorycontroller::class, 'seed_categories']);
-//
-// // quiz routes
-// Route::get('/quizzes', [quizcontroller::class, 'index']);
-// Route::get('/quizzes_category', [quizcontroller::class, 'get_all_quizzes_and_category']);
-// Route::get('/quizzes/{id}', [quizcontroller::class, 'show']);
-//
-use App\Http\Controllers\quizcontroller;
-use App\Models\category;
-use App\Models\quiz;
-use Illuminate\Support\Facades\Route;
+    //
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // });
+    //
+    // // category routes
+    // Route::get('/categories', [categorycontroller::class, 'get_all_category']);
+    // Route::get('/categories/{id}', [categorycontroller::class, 'get_category_by_id']);
+    // Route::post('/categories', [categorycontroller::class, 'create_category']);
+    // Route::get('/categories/seed', [categorycontroller::class, 'seed_categories']);
+    //
+    // // quiz routes
+    // Route::get('/quizzes', [quizcontroller::class, 'index']);
+    // Route::get('/quizzes_category', [quizcontroller::class, 'get_all_quizzes_and_category']);
+    // Route::get('/quizzes/{id}', [quizcontroller::class, 'show']);
+    //
+    use App\Http\Controllers\quizcontroller;
+    use App\Models\category;
+    use App\Models\quiz;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    use function Illuminate\Log\log;
 
-Route::get('/axmed', function () {
-    return view('axmed');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-// View All Quizzes
-Route::get('/quizzes', function () {
-    $quizzes = quiz::with('category')->get();
+    Route::get('/axmed', function () {
+        return view('axmed');
+    });
 
-    return view('quizzes.index', compact('quizzes'));
-})->name('quizzes.index');
+    // View All Quizzes
+    Route::get('/quizzes', function () {
+        $quizzes = quiz::with('category')->get();
 
-// Show Create Form
-Route::get('/quizzes/create', function () {
-    $categories = category::all(); // Get categories for the dropdown
+        return view('quizzes.index', compact('quizzes'));
+    })->name('quizzes.index');
 
-    return view('quizzes.create', compact('categories'));
-})->name('quizzes.create');
+    // Show Create Form
+    Route::get('/quizzes/create', function () {
+        $categories = category::all(); // Get categories for the dropdown
 
-// Handle Form Submission (POST)
-Route::post('/quizzes', [quizcontroller::class, 'create'])->name('quizzes.store');
+        return view('quizzes.create', compact('categories'));
+    })->name('quizzes.create');
+
+    // Handle Form Submission (POST)
+    Route::post('/quizzes', [quizcontroller::class, 'create'])->name('quizzes.store');
+
+    Route::post('/test', function (Request $request) {
+        Log($request->all());
+        echo 'Received data: ' . json_encode($request->all());
+
+        return view('axmed');
+    })->name('test');

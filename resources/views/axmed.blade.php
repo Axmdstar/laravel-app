@@ -24,5 +24,13 @@
         <h1>
             axmed
         </h1>
+        <form action="{{ route('test') }}" method="post" >
+            @csrf
+          <input type="text" name="test" >
+          <button type="submit" >
+                Save
+            </button>
+
+        </form>
     </section>
 </html>
